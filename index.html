@@ -25,11 +25,11 @@
 <body>
     <div id="filter-controls">
         <label><input type="checkbox" id="campfire-filter" checked> Campfires</label>
-        <label><input type="checkbox" id="enemy-filter" checked> Enemies</label>
-        <label><input type="checkbox" id="loot-filter" checked> Loot</label>
+        <label><input type="checkbox" id="scenes-filter" checked> Scenes</label>
+        <label><input type="checkbox" id="equipment-filter" checked> equipment</label>
         <label><input type="checkbox" id="quest-filter" checked> Quests</label>
-        <label><input type="checkbox" id="shop-filter" checked> Shops</label>
-        <label><input type="checkbox" id="thing-filter" checked> Thing</label>
+        <label><input type="checkbox" id="poi-filter" checked> Points Of Interest</label>
+        <label><input type="checkbox" id="collectables-filter" checked> Collectables</label>
     </div>
     <div id="map"></div>
 
@@ -40,7 +40,7 @@
         });
 
         var bounds = [[0,0], [1000,1000]];
-        var image = L.imageOverlay('assets/map.jpg', bounds).addTo(map); // this is making the image into the map
+        var image = L.imageOverlay('assets/medhen4k-scaled.jpg', bounds).addTo(map); // this is making the image into the map
         map.fitBounds(bounds);
 
         // Making the Icons
@@ -53,11 +53,11 @@
             }
         });
         var campIcon = new MapIcon({iconUrl: 'assets/campfire.png'}),
-        enemyIcon = new MapIcon({iconUrl: 'assets/enemies.png'}),
-        lootIcon = new MapIcon({iconUrl: 'assets/loot.png'}),
+        scenesIcon = new MapIcon({iconUrl: 'assets/scenes.png'}),
+        equipmentIcon = new MapIcon({iconUrl: 'assets/equipment.png'}),
         questIcon = new MapIcon({iconUrl: 'assets/quest.png'}),
-        shopIcon = new MapIcon({iconUrl: 'assets/shop.png'}),
-        thingIcon = new MapIcon({iconUrl: 'assets/thing.png'});
+        poiIcon = new MapIcon({iconUrl: 'poi.png'}),
+        collectablesIcon = new MapIcon({iconUrl: 'assets/collectables.png'});
 
         L.icon = function (options) {
             return new L.Icon(options);
@@ -65,11 +65,11 @@
 
         // this is filter stuff
         var campfireLayer = L.layerGroup();
-        var enemyLayer = L.layerGroup();
-        var lootLayer = L.layerGroup();
+        var scenesLayer = L.layerGroup();
+        var equipmentLayer = L.layerGroup();
         var questLayer = L.layerGroup();
-        var shopLayer = L.layerGroup();
-        var thingLayer = L.layerGroup();
+        var poiLayer = L.layerGroup();
+        var collectablesLayer = L.layerGroup();
 
 
         document.getElementById('campfire-filter').addEventListener('change', function() {
@@ -80,19 +80,19 @@
             }
         });
 
-        document.getElementById('enemy-filter').addEventListener('change', function() {
+        document.getElementById('scenes-filter').addEventListener('change', function() {
             if (this.checked) {
-                map.addLayer(enemyLayer);
+                map.addLayer(scenesLayer);
             } else {
-                map.removeLayer(enemyLayer);
+                map.removeLayer(scenesLayer);
             }
         });
 
-        document.getElementById('loot-filter').addEventListener('change', function() {
+        document.getElementById('equipment-filter').addEventListener('change', function() {
             if (this.checked) {
-                map.addLayer(lootLayer);
+                map.addLayer(equipmentLayer);
             } else {
-                map.removeLayer(lootLayer);
+                map.removeLayer(equipmentLayer);
             }
         });
 
@@ -104,19 +104,19 @@
             }
         });
 
-        document.getElementById('shop-filter').addEventListener('change', function() {
+        document.getElementById('poi-filter').addEventListener('change', function() {
             if (this.checked) {
-                map.addLayer(shopLayer);
+                map.addLayer(poiLayer);
             } else {
-                map.removeLayer(shopLayer);
+                map.removeLayer(poiLayer);
             }
         });
 
-        document.getElementById('thing-filter').addEventListener('change', function() {
+        document.getElementById('collectables-filter').addEventListener('change', function() {
             if (this.checked) {
-                map.addLayer(thingLayer);
+                map.addLayer(collectablesLayer);
             } else {
-                map.removeLayer(thingLayer);
+                map.removeLayer(collectablesLayer);
             }
         });
 
@@ -124,27 +124,27 @@
         // Testing them
         var markers = [
             L.marker([50, 50], {icon: campIcon}).addTo(campfireLayer).bindPopup('50, 50 <br><a href="https://www.google.com/" target="_blank">google</a>'),
-            L.marker([50, 75], {icon: enemyIcon}).addTo(enemyLayer).bindPopup('50, 75 '),
-            L.marker([100, 100], {icon: lootIcon}).addTo( lootLayer).bindPopup('100, 100'),
+            L.marker([50, 75], {icon: scenesIcon}).addTo(scenesLayer).bindPopup('50, 75 '),
+            L.marker([100, 100], {icon: equipmentIcon}).addTo( equipmentLayer).bindPopup('100, 100'),
             L.marker([500, 500], {icon: questIcon}).addTo(questLayer).bindPopup('500, 500 tester for sidebar'),
-            L.marker([1000, 1000], {icon: shopIcon}).addTo(shopLayer).bindPopup('1000, 1000'),
-            L.marker([25, 250], {icon: thingIcon}).addTo(thingLayer).bindPopup('25, 250'),
+            L.marker([1000, 1000], {icon: poiIcon}).addTo(poiLayer).bindPopup('1000, 1000'),
+            L.marker([25, 250], {icon: collectablesIcon}).addTo(collectablesLayer).bindPopup('25, 250'),
             L.marker([420, 420], {icon: campIcon}).addTo(campfireLayer).bindPopup('420, 420'),
-            L.marker([500, 700], {icon: enemyIcon}).addTo(enemyLayer).bindPopup('500, 700'),
-            L.marker([1500, 1500], {icon: lootIcon}).addTo( lootLayer).bindPopup('1500, 1500'),
+            L.marker([500, 700], {icon: scenesIcon}).addTo(scenesLayer).bindPopup('500, 700'),
+            L.marker([1500, 1500], {icon: equipmentIcon}).addTo( equipmentLayer).bindPopup('1500, 1500'),
             L.marker([899, 899], {icon: questIcon}).addTo(questLayer).bindPopup('899, 899.'),
-            L.marker([1245, 1245], {icon: thingIcon}).addTo(thingLayer).bindPopup('tightness test 1'),
-            L.marker([1255, 1255], {icon: lootIcon}).addTo( lootLayer).bindPopup('tighness test 2'),
+            L.marker([1245, 1245], {icon: collectablesIcon}).addTo(collectablesLayer).bindPopup('tightness test 1'),
+            L.marker([1255, 1255], {icon: equipmentIcon}).addTo( equipmentLayer).bindPopup('tighness test 2'),
         ];
         // Tempt fix for no sidebar is the added links to Popups
 
         // Filter
         campfireLayer.addTo(map);
-        enemyLayer.addTo(map);
-        lootLayer.addTo(map);
+        scenesLayer.addTo(map);
+        equipmentLayer.addTo(map);
         questLayer.addTo(map);
-        shopLayer.addTo(map);
-        thingLayer.addTo(map);
+        poiLayer.addTo(map);
+        collectablesLayer.addTo(map);
 
 
 
