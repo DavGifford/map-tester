@@ -5,6 +5,8 @@ bottom left is 0,0 top right 1000, 1000
 image is 2000px ^2
 tooltip is just hover text
 
+the temp icons are 30px x 30px
+
 List of PoIs
 -Quests
 -Equipment

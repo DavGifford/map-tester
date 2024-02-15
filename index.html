@@ -6,6 +6,7 @@
     <title>Map Test</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <style>
         #map {
             height: 1000px;
@@ -20,13 +21,20 @@
             margin-left: 40px;
             z-index: 1000;
         }
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .leaflet-popup-content-wrapper,
+        .leaflet-popup-tip {
+            font-family: 'Roboto', sans-serif; /* Change 'Roboto' to your desired font */
+        }
     </style>
 </head>
 <body>
     <div id="filter-controls">
         <label><input type="checkbox" id="campfire-filter" checked> Campfires</label>
         <label><input type="checkbox" id="scenes-filter" checked> Scenes</label>
-        <label><input type="checkbox" id="equipment-filter" checked> equipment</label>
+        <label><input type="checkbox" id="equipment-filter" checked> Equipment</label>
         <label><input type="checkbox" id="quest-filter" checked> Quests</label>
         <label><input type="checkbox" id="poi-filter" checked> Points Of Interest</label>
         <label><input type="checkbox" id="collectables-filter" checked> Collectables</label>
@@ -49,9 +57,11 @@
             // im stilling messing with these
                 iconSize:     [25, 25], // size of icon
                 iconAnchor:   [25, 25], // finer placement???
-                popupAnchor:  [-3, -76] // no clue
+                popupAnchor:  [-13,-30] // no clue
             }
         });
+
+        // Icons
         var campIcon = new MapIcon({iconUrl: 'assets/campfire.png'}),
         scenesIcon = new MapIcon({iconUrl: 'assets/scenes.png'}),
         equipmentIcon = new MapIcon({iconUrl: 'assets/equipment.png'}),
@@ -123,18 +133,25 @@
 
         // Testing them
         var markers = [
-            L.marker([50, 50], {icon: campIcon}).addTo(campfireLayer).bindPopup('50, 50 <br><a href="https://www.google.com/" target="_blank">google</a>'),
-            L.marker([50, 75], {icon: scenesIcon}).addTo(scenesLayer).bindPopup('50, 75 '),
-            L.marker([100, 100], {icon: equipmentIcon}).addTo( equipmentLayer).bindPopup('100, 100'),
-            L.marker([500, 500], {icon: questIcon}).addTo(questLayer).bindPopup('500, 500 tester for sidebar'),
-            L.marker([1000, 1000], {icon: poiIcon}).addTo(poiLayer).bindPopup('1000, 1000'),
-            L.marker([25, 250], {icon: collectablesIcon}).addTo(collectablesLayer).bindPopup('25, 250'),
-            L.marker([420, 420], {icon: campIcon}).addTo(campfireLayer).bindPopup('420, 420'),
-            L.marker([500, 700], {icon: scenesIcon}).addTo(scenesLayer).bindPopup('500, 700'),
-            L.marker([1500, 1500], {icon: equipmentIcon}).addTo( equipmentLayer).bindPopup('1500, 1500'),
-            L.marker([899, 899], {icon: questIcon}).addTo(questLayer).bindPopup('899, 899.'),
-            L.marker([1245, 1245], {icon: collectablesIcon}).addTo(collectablesLayer).bindPopup('tightness test 1'),
-            L.marker([1255, 1255], {icon: equipmentIcon}).addTo( equipmentLayer).bindPopup('tighness test 2'),
+            // CAMPFIRES
+            L.marker([350, 660], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire'),
+            L.marker([400, 460], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire'),
+            L.marker([350, 660], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire'),
+
+            // SCENES
+            L.marker([50, 75], {icon: scenesIcon}).addTo(scenesLayer).bindPopup('<a href="https://www.google.com/" target="_blank">google</a>'),
+           
+            // EQUIPMENT   
+            // L.marker([100, 100], {icon: equipmentIcon}).addTo( equipmentLayer).bindPopup('100, 100'),
+
+            // QUESTS
+            // L.marker([500, 500], {icon: questIcon}).addTo(questLayer).bindPopup('500, 500 tester for sidebar'),
+
+            // PoIs, {icon: can change}
+            // L.marker([1000, 1000], {icon: poiIcon}).addTo(poiLayer).bindPopup('1000, 1000'),
+
+            // COLLECTABLES
+            // L.marker([25, 250], {icon: collectablesIcon}).addTo(collectablesLayer).bindPopup('25, 250'),
         ];
         // Tempt fix for no sidebar is the added links to Popups
 
