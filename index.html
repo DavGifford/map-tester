@@ -66,6 +66,11 @@
         scenesIcon = new MapIcon({iconUrl: 'assets/scenes.png'}),
         equipmentIcon = new MapIcon({iconUrl: 'assets/equipment.png'}),
         questIcon = new MapIcon({iconUrl: 'assets/quest.png'}),
+        poiCIcon = new MapIcon({iconUrl: 'poi-city.png'}),
+        poiPIcon = new MapIcon({iconUrl: 'poi-preg.png'}),
+        poiRIcon = new MapIcon({iconUrl: 'poi-ruin.png'}),
+        poiSIcon = new MapIcon({iconUrl: 'poi-set.png'}),
+        poiUIcon = new MapIcon({iconUrl: 'poi-ug.png'}),
         poiIcon = new MapIcon({iconUrl: 'poi.png'}),
         collectablesIcon = new MapIcon({iconUrl: 'assets/collectables.png'});
 
@@ -134,9 +139,15 @@
         // Testing them
         var markers = [
             // CAMPFIRES
-            L.marker([350, 660], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire'),
-            L.marker([400, 460], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire'),
-            L.marker([350, 660], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire'),
+            L.marker([350, 650], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire 1'),
+            L.marker([413, 445], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire 2'),
+            L.marker([345, 725], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire 3'),
+            L.marker([345, 725], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire 4'),
+            L.marker([415, 790], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire 5'),
+            L.marker([345, 725], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire 6'),
+            L.marker([345, 725], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire 7'),
+            L.marker([550, 905], {icon: campIcon}).addTo(campfireLayer).bindPopup('a campfire 8'),
+
 
             // SCENES
             L.marker([50, 75], {icon: scenesIcon}).addTo(scenesLayer).bindPopup('<a href="https://www.google.com/" target="_blank">google</a>'),
