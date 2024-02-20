@@ -14,3 +14,12 @@ List of PoIs
 -Collectables
 -Scenes
 -Campfires
+
+I gotta finish Locations and Collectables
+
+Future Stuff
+-tilemap
+-CSS
+-Switched the icons
+-Do Heifer's Reach
+-get a more updated map
