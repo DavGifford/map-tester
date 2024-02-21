@@ -23,3 +23,4 @@ Future Stuff
 -Switched the icons
 -Do Heifer's Reach
 -get a more updated map
+-Ids for table rows
